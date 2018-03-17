@@ -8,7 +8,7 @@ var session = require('express-session');
 // cargando middlware personalizado
 var middleware = require('./config/middleware');
 // cargando routes
-var index = require('./routes/index');
+var home = require('./routes/home');
 var test = require('./routes/test');
 var evento = require('./routes/evento');
 // creando instancia de aplicación
@@ -27,7 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // usando middleware
 app.use(middleware.preResponse());
 // montando rutas
-app.use('/', index);
+app.use('/', home);
 app.use('/test', test);
 app.use('/evento', evento);
 // catch 404 and forward to error handler
