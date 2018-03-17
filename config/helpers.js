@@ -20,5 +20,14 @@ var loadJs = function(jss) {
   return rpta;
 }
 
+var fechaViewToJS = function(fecha_view){ //formato dd/mm/aaaa
+  var fecha_array = fecha_view.split('/');
+  var anio = fecha_array[2];
+  var mes = fecha_array[1] - 1;
+  var dia = fecha_array[0];
+  return Date.parse(new Date(anio, mes, dia));
+}
+
 exports.loadCss = loadCss;
 exports.loadJs = loadJs;
+exports.fechaViewToJS = fechaViewToJS;

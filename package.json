@@ -18,6 +18,7 @@
     "handlebars": "^4.0.10",
     "express-session": "^1.15.6",
     "json-lint": "~0.1.0",
-    "ejdb": "^1.2.12-42"
+    "ejdb": "^1.2.12-42",
+    "dateformat": "^3.0.2"
   }
 }
