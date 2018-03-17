@@ -105,6 +105,39 @@ def nombre_url
   end
 end
 
+def eliminar
+  RSpec.describe App do
+    describe '4. Eliminar eventos: ' do
+      it '4.1 Conexión con backend' do
+        url = 'test/conexion'
+        test = App.new(url)
+        test.get()
+        expect(test.response.code).to eq(200)
+      end
+      it '4.2 Eliminar eventos' do
+        data = {
+          :nuevos => [
+          ],
+          :editados => [
+          ],
+          :eliminados => ['5aad18f1409a931a00000000', '5aad18f8409a931a00000001']
+        }.to_json
+        url = 'evento/guardar?data=' + data
+        test = App.new(url)
+        test.post()
+        if test.response.code != 200 then
+          puts test.response.body
+        end
+        expect(test.response.code).to eq(200)
+        expect(test.response.body).not_to include('error')
+        expect(test.response.body).to include('Se ha registrado los cambios en los eventos')
+        expect(test.response.body).to include('success')
+      end
+    end
+  end
+end
+
 #crear
-editar
+#editar
 #nombre_url
+eliminar

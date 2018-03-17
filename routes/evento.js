@@ -62,6 +62,28 @@ router.post('/editar', function(req, res, next) {
   });
 });
 
+router.post('/guardar', function(req, res, next) {
+  var data = JSON.parse(req.query.data);
+  var eliminados = data['eliminados'];
+  var rpta = null;
+  var error = false;
+  eliminados.forEach(function(eliminado) {
+    console.log(eliminado);
+    error = db.conn.update('eventos', {'_id' : eliminado, $dropall : true}, function(err, oids) {
+      if (err) {
+        console.log(err);
+        return true;
+      }
+    });
+  });
+  if(error){
+    rpta = {'tipo_mensaje' :  'error', 'mensaje' : ['Se ha producido un error en eliminar los eventos', 'ver logs']};
+  }else{
+    rpta = {'tipo_mensaje' :  'success', 'mensaje' : ['Se ha registrado los cambios en los eventos', 'ver logs']};
+  }
+  res.send(JSON.stringify(rpta));
+});
+
 router.get('/nombre_url', function(req, res, next) {
   var nombre_url = req.query.nombre_url;
   db.conn.find('eventos', {'nombre_url': nombre_url}, function(err, cursor) {
