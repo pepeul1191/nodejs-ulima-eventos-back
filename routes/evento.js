@@ -78,7 +78,7 @@ router.post('/guardar', function(req, res, next) {
   if(error){
     rpta = {'tipo_mensaje' :  'error', 'mensaje' : ['Se ha producido un error en eliminar los eventos', 'ver logs']};
   }else{
-    rpta = {'tipo_mensaje' :  'success', 'mensaje' : ['Se ha registrado los cambios en los eventos', 'ver logs']};
+    rpta = {'tipo_mensaje' :  'success', 'mensaje' : ['Se ha registrado los cambios en los eventos']};
   }
   res.send(JSON.stringify(rpta));
 });
