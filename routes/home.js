@@ -4,6 +4,10 @@ var constants = require('../config/constants');
 var helpers = require('../config/helpers');
 
 router.get('/', function(req, res, next) {
+  res.status(500).send('Error: URL vacía');
+});
+
+router.get('/home', function(req, res, next) {
   var csss = [
     'bower_components/bootstrap/dist/css/bootstrap.min',
     'bower_components/font-awesome/css/font-awesome.min',
