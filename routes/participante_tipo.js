@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var db = require('../config/database');
-var helpers = require('../config/helpers');
 
 router.get('/listar', function(req, res, next) {
   db.conn.find('participante_tipos', function(err, cursor, count) {
