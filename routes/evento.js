@@ -68,7 +68,6 @@ router.post('/guardar', function(req, res, next) {
   var rpta = null;
   var error = false;
   eliminados.forEach(function(eliminado) {
-    console.log(eliminado);
     error = db.conn.update('eventos', {'_id' : eliminado, $dropall : true}, function(err, oids) {
       if (err) {
         console.log(err);

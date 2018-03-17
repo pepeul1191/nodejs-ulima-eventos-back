@@ -11,6 +11,7 @@ var middleware = require('./config/middleware');
 var home = require('./routes/home');
 var test = require('./routes/test');
 var evento = require('./routes/evento');
+var participante_tipo = require('./routes/participante_tipo');
 // creando instancia de aplicación
 var app = express();
 // view engine setup
@@ -30,6 +31,7 @@ app.use(middleware.preResponse());
 app.use('/', home);
 app.use('/test', test);
 app.use('/evento', evento);
+app.use('/participante_tipo', participante_tipo);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
