@@ -50,7 +50,7 @@ def editar
         data = {
           :_id => '5aad032db409546800000000',
           :nombre => 'Biopolímero a partir del almidón de papa XD',
-          :nombre_url => 'biopolimero-a-partir-del-almidón-de-papa-xd',
+          :nombre_url => 'biopolimero-a-partir-del-almidon-de-papa-xd',
           :dia_inicio => '22/07/2013',
           :dia_fin => '22/07/2013',
           :hora_inicio => '14.02',
@@ -73,5 +73,38 @@ def editar
   end
 end
 
+def nombre_url
+  RSpec.describe App do
+    describe '3. Obtener evento por nombre_url: ' do
+      it '3.1 Conexión con backend' do
+        url = 'test/conexion'
+        test = App.new(url)
+        test.get()
+        expect(test.response.code).to eq(200)
+      end
+      it '3.2 Obtener evento' do
+        data = 'biopolimero-a-partir-del-almidon-de-papa-xd'
+        url = 'evento/nombre_url?nombre_url=' + data
+        test = App.new(url)
+        test.get()
+        if test.response.code != 200 then
+          puts test.response.body
+        end
+        expect(test.response.code).to eq(200)
+        expect(test.response.body).not_to include('error')
+        expect(test.response.body).to include('nombre')
+        expect(test.response.body).to include('nombre_url')
+        expect(test.response.body).to include('dia_inicio')
+        expect(test.response.body).to include('dia_fin')
+        expect(test.response.body).to include('hora_inicio')
+        expect(test.response.body).to include('hora_fin')
+        expect(test.response.body).to include('lugar')
+        expect(test.response.body).to include('direccion')
+      end
+    end
+  end
+end
+
 #crear
 editar
+#nombre_url
