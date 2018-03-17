@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
 // cargando middlware personalizado
 var middleware = require('./config/middleware');
 // cargando routes
@@ -20,6 +21,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(session({secret: "Shh, its a secret!"}));
 app.use(express.static(path.join(__dirname, 'public')));
 // usando middleware
 app.use(middleware.preResponse());
