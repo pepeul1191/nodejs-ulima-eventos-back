@@ -36,4 +36,23 @@ router.post('/crear', function(req, res, next) {
   });
 });
 
+router.get('/dni', function(req, res, next) {
+  var dni = req.query.dni;
+  db.conn.find('externos', {'dni': dni}, function(err, cursor) {
+    var rpta = null;
+    while (cursor.next()) {
+      rpta = {
+        '_id' : cursor.field('_id'),
+        'dni' : cursor.field('dni'),
+        'nombres' : cursor.field('nombres'),
+        'paterno' : cursor.field('paterno'),
+        'materno' : cursor.field('materno'),
+        'correo' : cursor.field('correo'),
+        'telefono' : cursor.field('telefono'),
+      };
+    }
+    res.send(JSON.stringify(rpta));
+  });
+});
+
 module.exports = router;

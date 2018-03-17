@@ -13,9 +13,9 @@ def crear
       end
       it '1.2 Crear externo' do
         data = {
-          :dni => '70232383',
+          :dni => '70232385',
           :nombres => 'Carlos Alberto',
-          :paterno => 'Tevez',
+          :paterno => 'Tevez x',
           :materno => 'Martinez',
           :correo => 'carlitos@cabj.ar',
           :telefono => '819234-12312',
