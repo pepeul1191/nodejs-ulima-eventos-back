@@ -55,4 +55,18 @@ router.get('/dni', function(req, res, next) {
   });
 });
 
+router.post('/editar', function(req, res, next) {
+  var document = JSON.parse(req.query.evento);
+  db.conn.update('externos', {'_id': document['_id'], $set : document}, function(err, oids) {
+    if (err) {
+      console.log(err);
+      var rpta = {'tipo_mensaje' :  'error', 'mensaje' : ['Se ha producido un error en editar el participante externo', err]};
+      res.send(JSON.stringify(rpta));
+    }else {
+      var rpta = {'tipo_mensaje' :  'success', 'mensaje' : ['Se ha editado el participante externo']};
+      res.send(JSON.stringify(rpta));
+    }
+  });
+});
+
 module.exports = router;
