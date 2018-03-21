@@ -25,6 +25,7 @@ router.get('/listar', function(req, res, next) {
         'hora_fin' : cursor.field('hora_fin'),
         'lugar' : cursor.field('lugar'),
         'direccion' : cursor.field('direccion'),
+        'descripcion' : cursor.field('descripcion'),
       };
       rs.push(data);
     }
